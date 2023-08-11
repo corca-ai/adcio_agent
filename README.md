@@ -1,5 +1,7 @@
 # adcio_agent
 
+[![pub package](https://img.shields.io/pub/v/adcio_agent.svg)](https://pub.dev/packages/adcio_agent)
+
 A Flutter plugin that provides a ADCIO Agent widget.
 
 
@@ -42,7 +44,6 @@ Widget build(BuildContext context) {
     ),
     body: AdcioAgent(
       clientId: '30cb6fd0-17a5-4c56-b144-fef67de81bef',
-      flavor: Flavor.dev,
       onClickProduct: (String productId) {
         log('productId = $productId');
 
