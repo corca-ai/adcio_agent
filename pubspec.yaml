@@ -1,7 +1,7 @@
 name: adcio_agent
 description: A new Flutter plugin project.
-version: 0.0.1
-homepage:
+version: 0.1.0
+homepage: https://github.com/corca-ai/adcio_agent
 
 environment:
   sdk: '>=3.0.5 <4.0.0'
