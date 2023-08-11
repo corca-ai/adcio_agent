@@ -36,7 +36,6 @@ class HomePage extends StatelessWidget {
       ),
       body: AdcioAgent(
         clientId: '30cb6fd0-17a5-4c56-b144-fef67de81bef',
-        flavor: Flavor.dev,
         onClickProduct: (String productId) {
           log('productId = $productId');
 
