@@ -1,6 +1,8 @@
 # adcio_agent
 
 A Flutter plugin that provides a ADCIO Agent widget.
+
+
 |             | Android        | iOS   |
 |-------------|----------------|-------|
 | **Support** | SDK 19+ or 20+ | 11.0+ |
@@ -56,3 +58,21 @@ Widget build(BuildContext context) {
   );
 }
 ```
+
+</br>
+
+## Preview Images
+
+**Android:**
+
+<p float="left">
+  <img width="200" alt="image" src="https://github.com/corca-ai/adcio_agent/assets/51875059/013ab4d8-7f6c-4522-9d1d-8b0f415d69b4">
+  <img width="200" alt="image" src="https://github.com/corca-ai/adcio_agent/assets/51875059/2b96aea1-6098-4e76-96e0-582570a5438b">
+</p>
+
+iOS:
+
+<p float="left">
+  <img width="200" alt="image" src="https://github.com/corca-ai/adcio_agent/assets/51875059/b80f1ccf-bede-462d-9bf8-b82d02029d5b">
+  <img width="200" alt="image" src="https://github.com/corca-ai/adcio_agent/assets/51875059/5279bedf-b427-4fc7-94e7-d30f023b0048">
+</p>
