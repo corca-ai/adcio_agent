@@ -4,14 +4,21 @@ import 'dart:io';
 import 'package:flutter/widgets.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-enum Flavor { dev, prod }
-
+/// Constructs a [AdcioAgent].
+///
+/// example code:
+/// ```dart
+/// AdcioAgent(
+///   clientId: '30cb6fd0-17a5-4c56-b144-fef67de81bef',
+///   onClickProduct: (String productId) { ... },
+/// )
+/// ```
 class AdcioAgent extends StatefulWidget {
   const AdcioAgent({
     super.key,
     required this.clientId,
-    this.flavor = Flavor.prod,
     required this.onClickProduct,
+    this.baseUrl = 'https://agent.adcio.ai',
     this.onNavigationRequest,
     this.onPageStarted,
     this.onPageFinished,
@@ -20,10 +27,28 @@ class AdcioAgent extends StatefulWidget {
     this.onUrlChange,
   });
 
+  /// This is the Client ID (Client Unique Number) written in the ADCIO Admin Console.
+  ///
+  /// Location: ADCIO admin console → account → client info → Client Unique Number
   final String clientId;
-  final Flavor flavor;
 
+  /// When clicking on a product recommended by LLM(GPT), the product ID value is returned to the client app.
+  ///
+  /// Typically, post-processing tasks like page routing are performed.
+  ///
+  /// ```dart
+  /// AdcioAgent(
+  ///   ...
+  ///   onClickProduct: (String productId) {
+  ///     Navigator.pushNamed(context, '/product/$productId');
+  ///   }
+  /// ),
+  /// ```
   final void Function(String productId) onClickProduct;
+
+  /// This is the ADCIO Agent URL.
+  final String baseUrl;
+
   final FutureOr<NavigationDecision> Function(NavigationRequest request)?
       onNavigationRequest;
   final void Function(String url)? onPageStarted;
@@ -44,11 +69,8 @@ class _AdcioAgentState extends State<AdcioAgent> {
   String get _agentUrl {
     final clientId = widget.clientId;
     final platform = Platform.operatingSystem.toLowerCase();
-    final baseUrl = (Flavor.dev == widget.flavor)
-        ? 'https://agent-dev.adcio.ai'
-        : 'https://agent.adcio.ai';
 
-    return '$baseUrl/$clientId/start/?platform=$platform';
+    return '${widget.baseUrl}/$clientId/start/?platform=$platform';
   }
 
   @override
