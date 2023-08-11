@@ -58,6 +58,11 @@ Widget build(BuildContext context) {
   );
 }
 ```
+| property        | description                                                        | default    |
+| --------------- | ------------------------------------------------------------------ |------------|
+| clientId             | String                                         |required    |
+| flavor     | Flavor.prod or Flavor.dev (optional)                 |Flavor.prod  |
+| onClickProduct         | void Function(String productId) | required    |
 
 </br>
 
