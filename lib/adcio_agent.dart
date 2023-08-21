@@ -99,8 +99,20 @@ class _AdcioAgentState extends State<AdcioAgent> {
 
   @override
   Widget build(BuildContext context) {
-    return WebViewWidget(
-      controller: _controller,
+    return WillPopScope(
+      onWillPop: () => _controller.canGoBack().then(
+        (canGoBack) {
+          if (canGoBack) {
+            _controller.goBack();
+            return Future.value(false);
+          } else {
+            return Future.value(true);
+          }
+        },
+      ),
+      child: WebViewWidget(
+        controller: _controller,
+      ),
     );
   }
 }
