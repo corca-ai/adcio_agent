@@ -4,6 +4,12 @@ import 'dart:io';
 import 'package:flutter/widgets.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+final _controller = WebViewController.fromPlatformCreationParams(
+  const PlatformWebViewControllerCreationParams(),
+);
+
+const _startPage = 'start/';
+
 /// Constructs a [AdcioAgent].
 ///
 /// example code:
@@ -62,15 +68,11 @@ class AdcioAgent extends StatefulWidget {
 }
 
 class _AdcioAgentState extends State<AdcioAgent> {
-  final _controller = WebViewController.fromPlatformCreationParams(
-    const PlatformWebViewControllerCreationParams(),
-  );
-
   String get _agentUrl {
     final clientId = widget.clientId;
     final platform = Platform.operatingSystem.toLowerCase();
 
-    return '${widget.baseUrl}/$clientId/start/?platform=$platform';
+    return '${widget.baseUrl}/$clientId/$_startPage?platform=$platform';
   }
 
   @override
@@ -100,19 +102,27 @@ class _AdcioAgentState extends State<AdcioAgent> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () => _controller.canGoBack().then(
-        (canGoBack) {
-          if (canGoBack) {
-            _controller.goBack();
-            return Future.value(false);
-          } else {
-            return Future.value(true);
-          }
-        },
-      ),
+      onWillPop: agentGoback,
       child: WebViewWidget(
         controller: _controller,
       ),
     );
   }
+}
+
+Future<bool> get isAgnetStartPage => _controller
+    .currentUrl()
+    .then((value) => value?.contains(_startPage) ?? false);
+
+Future<bool> agentGoback() {
+  return _controller.canGoBack().then(
+    (canGoBack) {
+      if (canGoBack) {
+        _controller.goBack();
+        return Future.value(false);
+      } else {
+        return Future.value(true);
+      }
+    },
+  );
 }

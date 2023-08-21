@@ -66,6 +66,28 @@ Widget build(BuildContext context) {
 
 </br>
 
+call agent page goBack action:
+```dart
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: BackButton(
+          onPressed: () async {
+            final isStartPage = await isAgnetStartPage;
+
+            isStartPage ? Navigator.of(context).canPop() : agentGoback();
+          },
+        ),
+        ...
+      ),
+      ...
+    );
+  }
+```
+
+</br>
+
 ## Preview Images
 
 **Android:**

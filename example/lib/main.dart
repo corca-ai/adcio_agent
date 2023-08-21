@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 
 import 'package:adcio_agent/adcio_agent.dart';
@@ -32,10 +34,18 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(
+          onPressed: () async {
+            final isStartPage = await isAgnetStartPage;
+
+            isStartPage ? Navigator.of(context).canPop() : agentGoback();
+          },
+        ),
         title: const Text('adcio_agent example app'),
       ),
       body: AdcioAgent(
         clientId: '30cb6fd0-17a5-4c56-b144-fef67de81bef',
+        baseUrl: 'https://agent-dev.adcio.ai',
         onClickProduct: (String productId) {
           log('productId = $productId');
 
