@@ -1,3 +1,9 @@
+## 0.1.2
+
+* Feature: support hisotry navigation
+* Feature: add `agentGoback()` method
+* Feature: add `isBackButtonVisible` property
+
 ## 0.1.1
 
 * Documentation update

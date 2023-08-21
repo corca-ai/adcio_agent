@@ -1,6 +1,6 @@
 name: adcio_agent
 description: This is a Flutter agent for the ADCIO project, a chatbot based on LLM(GPT) that suggests personalized products through conversations
-version: 0.1.1
+version: 0.1.2
 homepage: https://github.com/corca-ai/adcio_agent
 
 environment:
