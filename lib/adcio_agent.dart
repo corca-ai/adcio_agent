@@ -107,6 +107,12 @@ class _AdcioAgentState extends State<AdcioAgent> {
   }
 
   @override
+  void dispose() {
+    _controller.removeJavaScriptChannel('ProductRouter');
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: agentGoback,
