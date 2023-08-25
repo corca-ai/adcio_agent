@@ -1,3 +1,7 @@
+## 0.1.4
+
+* Fix: already exists addJavaScriptChannel
+
 ## 0.1.3
 
 * Feature: add `showAppbar` property
