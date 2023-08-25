@@ -31,6 +31,7 @@ class AdcioAgent extends StatefulWidget {
     this.onProgress,
     this.onWebResourceError,
     this.onUrlChange,
+    this.showAppbar = false,
   });
 
   /// This is the Client ID (Client Unique Number) written in the ADCIO Admin Console.
@@ -55,6 +56,8 @@ class AdcioAgent extends StatefulWidget {
   /// This is the ADCIO Agent URL.
   final String baseUrl;
 
+  final bool showAppbar;
+
   final FutureOr<NavigationDecision> Function(NavigationRequest request)?
       onNavigationRequest;
   final void Function(String url)? onPageStarted;
@@ -71,8 +74,12 @@ class _AdcioAgentState extends State<AdcioAgent> {
   String get _agentUrl {
     final clientId = widget.clientId;
     final platform = Platform.operatingSystem.toLowerCase();
+    final showAppbar = widget.showAppbar;
 
-    return '${widget.baseUrl}/$clientId/$_startPage?platform=$platform';
+    final url =
+        '${widget.baseUrl}/$clientId/$_startPage?platform=$platform&show_appbar=$showAppbar';
+    debugPrint(url);
+    return url;
   }
 
   @override
