@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         leading: BackButton(
           onPressed: () async {
-            final isStartPage = await isAgnetStartPage;
+            final isStartPage = await isAgentStartPage;
 
             isStartPage ? Navigator.of(context).canPop() : agentGoback();
           },

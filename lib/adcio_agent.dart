@@ -123,7 +123,7 @@ class _AdcioAgentState extends State<AdcioAgent> {
   }
 }
 
-Future<bool> get isAgnetStartPage => _controller
+Future<bool> get isAgentStartPage => _controller
     .currentUrl()
     .then((value) => value?.contains(_startPage) ?? false);
 

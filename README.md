@@ -74,7 +74,7 @@ call agent page goBack action:
       appBar: AppBar(
         leading: BackButton(
           onPressed: () async {
-            final isStartPage = await isAgnetStartPage;
+            final isStartPage = await isAgentStartPage;
 
             isStartPage ? Navigator.of(context).canPop() : agentGoback();
           },
