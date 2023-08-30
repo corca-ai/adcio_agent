@@ -1,3 +1,7 @@
+## 0.1.5
+
+* Chore: fix typo
+
 ## 0.1.4
 
 * Fix: already exists addJavaScriptChannel
