@@ -2,48 +2,30 @@
 
 [![pub package](https://img.shields.io/pub/v/adcio_agent.svg)](https://pub.dev/packages/adcio_agent)
 
-A Flutter plugin that provides a ADCIO Agent widget.
+A Flutter plugin that provides a ADCIO Agent Widget service. This is an LLM (GPT)-based chatbot that recommends customized products through conversation.
 
+To learn more about ADCIO, please visit the [ADCIO website](https://www.adcio.ai/)
 
-|             | Android        | iOS   |
-|-------------|----------------|-------|
-| **Support** | SDK 19+ or 20+ | 11.0+ |
-
-</br>
+## Getting Started
+To get started with ADCIO account, please register [ADCIO account](https://app.adcio.ai/en/)
 
 ## Usage
 
-### Installation
+> **_NOTE:_**  All adcio packages require the [adcio_core](https://pub.dev/packages/adcio_core) package as a dependency and make use of `initializeApp()` for setup.
 
-Add `adcio_agent` as a [dependency in your pubspec.yaml file](https://pub.dev/packages/adcio_agent/install).
+There is a simple use example:
 
-### Android
-
-This plugin uses
-[Platform Views](https://flutter.dev/docs/development/platform-integration/platform-views) to embed
-the Android’s WebView within the Flutter app.
-
-You should however make sure to set the correct `minSdkVersion` in `android/app/build.gradle` if it was previously lower than 19:
-
-```groovy
-android {
-    defaultConfig {
-        minSdkVersion 19
-    }
-}
-```
-
-### Sample Usage
-You can now display a ADCIO Agent by:
 ```dart
+import 'package:adcio_placement/adcio_placement.dart';
+
 @override
 Widget build(BuildContext context) {
   return Scaffold(
     appBar: AppBar(
+      ...
       title: const Text('adcio_agent example app'),
     ),
     body: AdcioAgent(
-      clientId: '30cb6fd0-17a5-4c56-b144-fef67de81bef',
       onClickProduct: (String productId) {
         log('productId = $productId');
 
@@ -59,47 +41,7 @@ Widget build(BuildContext context) {
   );
 }
 ```
-| property        | description                                                        | default    |
-| --------------- | ------------------------------------------------------------------ |------------|
-| clientId             | String                                         |required    |
-| onClickProduct         | void Function(String productId) | required    |
+To learn more about usage of plugin, please visit the [adcio_agent Usage documentation.](https://docs.adcio.ai/en/sdk/agent/flutter)
 
-</br>
-
-call agent page goBack action:
-```dart
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: BackButton(
-          onPressed: () async {
-            final isStartPage = await isAgentStartPage;
-
-            isStartPage ? Navigator.of(context).canPop() : agentGoback();
-          },
-        ),
-        ...
-      ),
-      ...
-    );
-  }
-```
-
-</br>
-
-## Preview Images
-
-**Android:**
-
-<p float="left">
-  <img width="200" alt="image" src="https://github.com/corca-ai/adcio_agent/assets/51875059/013ab4d8-7f6c-4522-9d1d-8b0f415d69b4">
-  <img width="200" alt="image" src="https://github.com/corca-ai/adcio_agent/assets/51875059/2b96aea1-6098-4e76-96e0-582570a5438b">
-</p>
-
-iOS:
-
-<p float="left">
-  <img width="200" alt="image" src="https://github.com/corca-ai/adcio_agent/assets/51875059/b80f1ccf-bede-462d-9bf8-b82d02029d5b">
-  <img width="200" alt="image" src="https://github.com/corca-ai/adcio_agent/assets/51875059/5279bedf-b427-4fc7-94e7-d30f023b0048">
-</p>
+## Issues and feedback
+If the plugin has issues, bugs, feedback, Please contact <dev@corca.ai>.
