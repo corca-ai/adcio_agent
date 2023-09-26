@@ -1,3 +1,7 @@
+## 0.1.6
+
+* Feature: Modified to depend on the [adcio_core](https://pub.dev/packages/adcio_core) package.
+
 ## 0.1.5
 
 * Chore: fix typo
