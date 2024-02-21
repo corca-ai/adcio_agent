@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:adcio_core/adcio_core.dart';
 import 'package:flutter/widgets.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -23,7 +22,7 @@ const _startPage = 'start/';
 class AdcioAgent extends StatefulWidget {
   const AdcioAgent({
     super.key,
-    String? clientId,
+    required this.clientId,
     required this.onClickProduct,
     this.baseUrl = 'https://agent.adcio.ai',
     this.onNavigationRequest,
@@ -33,26 +32,22 @@ class AdcioAgent extends StatefulWidget {
     this.onWebResourceError,
     this.onUrlChange,
     this.showAppbar = false,
-  }) : _clientId = clientId;
+  });
 
-  /// This is the Client ID (Client Unique Number) written in the ADCIO Admin Console.
-  ///
-  /// Location: ADCIO admin console → account → client info → Client Unique Number
-  final String? _clientId;
-  get clientId => _clientId ?? AdcioCore.clientId;
+  final String clientId;
 
-  /// When clicking on a product recommended by LLM(GPT), the product ID value is returned to the client app.
-  ///
-  /// Typically, post-processing tasks like page routing are performed.
-  ///
-  /// ```dart
-  /// AdcioAgent(
-  ///   ...
-  ///   onClickProduct: (String productId) {
-  ///     Navigator.pushNamed(context, '/product/$productId');
-  ///   }
-  /// ),
-  /// ```
+    /// When clicking on a product recommended by LLM(GPT), the product ID value is returned to the client app.
+    ///
+    /// Typically, post-processing tasks like page routing are performed.
+    ///
+    /// ```dart
+    /// AdcioAgent(
+    ///   ...
+    ///   onClickProduct: (String productId) {
+    ///     Navigator.pushNamed(context, '/product/$productId');
+    ///   }
+    /// ),
+    /// ```
   final void Function(String productId) onClickProduct;
 
   /// This is the ADCIO Agent URL.
