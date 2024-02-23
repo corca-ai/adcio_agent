@@ -1,3 +1,6 @@
+## 1.0.0
+* Feature: updated to reflect the core version up
+
 ## 0.1.6
 
 * Feature: Modified to depend on the [adcio_core](https://pub.dev/packages/adcio_core) package.
