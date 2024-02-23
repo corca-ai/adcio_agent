@@ -3,16 +3,10 @@
 import 'dart:developer';
 
 import 'package:adcio_agent/adcio_agent.dart';
-import 'package:adcio_core/adcio_core.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  /// this is important to call `AdcioCore.initializeApp(clientId: 'ADCIO_STORE_ID')` function.
-  await AdcioCore.initializeApp(
-    clientId: 'f8f2e298-c168-4412-b82d-98fc5b4a114a',
-  );
 
   runApp(const MyApp());
 }
@@ -64,6 +58,7 @@ class HomePage extends StatelessWidget {
           );
           Navigator.of(context).push(route);
         },
+        clientId: "f8f2e298-c168-4412-b82d-98fc5b4a114a",
       ),
     );
   }
